@@ -1,0 +1,47 @@
+{% extends "_base.html" %}
+{% block title %} Pridaj recept | Zochova recepty {% endblock %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4 fw-bold text-success">Pridaj svoj recept</h2>
+
+        <form method="POST" enctype="multipart/form-data" class="mx-auto shadow p-4 bg-white rounded-4"
+            style="max-width: 700px;">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+                {{ form.nazov.label(class="form-label fw-semibold") }}
+                {{ form.nazov(class="form-control", placeholder="Napr. Jablkový koláč") }}
+                {% for error in form.nazov.errors %}
+                <div class="text-danger small">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="mb-3">
+                {{ form.kratky_opis.label(class="form-label fw-semibold") }}
+                {{ form.kratky_opis(class="form-control", placeholder="Krátky opis receptu") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.kategoria.label(class="form-label fw-semibold") }}
+                {{ form.kategoria(class="form-select") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.popis.label(class="form-label fw-semibold") }}
+                {{ form.popis(class="form-control", rows="6", placeholder="Sem napíš celý recept...") }}
+            </div>
+
+            <div class="mb-4">
+                {{ form.obrazok.label(class="form-label fw-semibold") }}
+                {{ form.obrazok(class="form-select") }}
+            </div>
+
+            <div class="text-center">
+                {{ form.submit(class="btn btn-success btn-lg px-5 fw-semibold") }}
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

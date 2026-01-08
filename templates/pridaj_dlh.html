@@ -1,0 +1,43 @@
+{% extends '_base.html' %}
+
+{% include 'partials/navbar.html' %}
+
+{% block title %} Pridaj {{text}} {% endblock %}
+
+{% block content %}
+<section class="py-5" id="pridajdlh">
+    <div class="container">
+        <h2 class="text-center mb-4">Pridaj {{txt}}</h2>
+        <form method="POST" class="card p-4 shadow-sm d-flex">
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+                {{ form.dlznik.label(class='form-label') }}
+                {{ form.dlznik(class='form-control') }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.prijemca.label(class='form-label') }}
+                {{ form.prijemca(class='form-control') }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.suma.label(class='form-label') }}
+                {{ form.suma(class='form-control') }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.poznamka.label(class='form-label') }}
+                {{ form.poznamka(class='form-control', rows="6", placeholder="Mohol by som ho vyplatiť do budúceho
+                školského roku...") }}
+            </div>
+
+            {{ form.submit(class='btn btn-primary') }}
+
+        </form>
+    </div>
+</section>
+
+{% include 'partials/footer.html' %}
+
+{% endblock %}
