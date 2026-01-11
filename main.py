@@ -37,7 +37,7 @@ def home_page():
 @app.route('/zobraz_dlhy', methods=['GET','POST'])
 def zobraz_dlhy():
     dlzby = Dlh.query.order_by(Dlh.datum_pridania.asc()).all()
-    return render_template('zobraz_dlhy.html', dlzby=dlzby)
+    return render_template('zobraz_dlhy.html', dlzby=dlzby, txt=ReturnDlhText())
 
 @app.route('/pridaj_dlh', methods=["GET","POST"])
 def pridaj_ulohu():

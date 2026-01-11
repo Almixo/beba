@@ -2,17 +2,17 @@
 
 {% include 'partials/navbar.html' %}
 
-{% block title %} Zoznam dlžieb {% endblock %}
+{% block title %} Zoznam dlžieb {% endblock %}  
 
 {% block content %}
 
 <!-- Featured recipes -->
 <section class="py-5" id="recepty">
     <div class="container">
-        <h2 class="text-center mb-5">Najnovšie dlhy</h2>
+        <h2 class="text-center mb-5">Najnovšie {{txt+'y'}}</h2>
 
         {% if not dlzby %}
-        <h5 class="text-center mb-5">...</h5>
+        <h5 class="text-center py-5">Žiadne dlhy sa nenašli :)</h5>
 
         {% else %}
         <div class="row align-items-center">
@@ -20,7 +20,7 @@
             <div class="col-md-4">
                 <div class="card shadow-sm border-0">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Dlh z {{dlzba.datum_pridania.ctime()}}</h5>
+                        <h5 class="card-title text-center">Dlh z {{dlzba.datum_pridania.strftime("%d. %m. %Y")}}</h5>
                         <p class="card-text">Meno dlžníka: {{dlzba.dlznik}}</p>
                         <p class="card-text">Meno príjemcu: {{dlzba.prijemca}}</p>
                         <p class="card-text">Suma: {{dlzba.suma+'€'}}</p>
@@ -29,7 +29,7 @@
                         {% else %}
                         <p class="card-text">Poznámka: {{dlzba.poznamka}}</p>
                         {% endif %}
-                        <a href="{{url_for("odstranit", id=dlzba.id)}}" class="btn btn-outline-secondary w-100">Vymazať</a>
+                        <a href="{{url_for('odstranit', id=dlzba.id)}}" class="btn btn-outline-primary w-100">Vymazať</a>
                     </div>
                 </div>
             </div>
